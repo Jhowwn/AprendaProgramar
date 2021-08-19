@@ -1,0 +1,60 @@
+import React from 'react';
+import {View, Text, Dimensions, StyleSheet, TouchableHighlight} from 'react-native';
+
+function PeopleList({people, navigation}){
+    if (people.length != 0){
+        const textElements = people.map((person) =>{
+            const {id_python, descricao, palavra} = person;
+          return(
+            <TouchableHighlight onPress={()=>{
+                navigation.navigate("PeopleDetails",{person});
+            }} key={id_python}>
+                <View style={styles.container}>
+                    <Text style={styles.dicionario}>{`${palavra}`}</Text>
+                    <Text style={styles.palavras}>{`${descricao}`}</Text>
+                </View>
+            </TouchableHighlight>
+          )
+        });
+    
+        return(
+            <View>
+                {textElements}
+            </View>
+        );
+    }
+
+    return(
+        <Text style={styles.loading}>Carregando os dados...</Text>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#E2F9FF',
+        borderBottomColor:"#bbb",
+        borderBottomWidth: 4,
+    },
+    text:{
+        fontSize: 15,
+        paddingLeft: 20,
+        flex: 1
+    },
+    loading:{
+        fontSize: 20,
+        color:'#F00'
+    },
+    palavras:{
+      fontSize: 15,
+      color: '#0f0a0a',
+      padding: 10,
+    },
+    dicionario:{
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#0f0a0a',
+    },
+  });
+
+
+export default PeopleList;
