@@ -24,7 +24,7 @@ function Login({navigation}){
             alert(data.msg);
         }else{
             alert(data.msg);
-            navigation.navigate("/MainScreen")
+            navigation.navigate('Aprenda Programar', {MainScreen})
         }
 
     }

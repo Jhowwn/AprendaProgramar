@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import PeopleList from '../components/DicionarioList';
+import Dici from '../components/DicionarioList';
 
 function Dicionario(props) {
 
@@ -11,7 +11,7 @@ function Dicionario(props) {
 
   const {navigation} = props;
 
-  const [people, setPeople] = useState([]);
+  const [dici, setDici] = useState([]);
 
   useEffect( () => {
     const request = {
@@ -22,7 +22,7 @@ function Dicionario(props) {
 
     axios.post('http://192.168.100.57/tcc/dicionario/consultarPY', request)
         .then(resposta =>{
-          setPeople(resposta.data.dados)
+          setDici(resposta.data.dados)
         }).catch(err =>{
           console.log("Ocorreu um erro" + err)
         });
@@ -42,7 +42,7 @@ function Dicionario(props) {
 
           <View>
               
-            <PeopleList people={people} navigation={navigation}/>
+            <Dici dici={dici} navigation={navigation}/>
 
           </View>
 

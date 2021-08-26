@@ -2,9 +2,9 @@ import axios from 'axios';
 import { Text, View, StyleSheet, ScrollView} from 'react-native';
 import React, { useState} from 'react';
 import { TextInput, Button  } from 'react-native-paper';
+import TelaLogin from './TelaLogin';
 
-
-function Cadastrar(){
+function Cadastrar({navigation}){
 
     const [username, setUserName] = useState('');
     const [name, setName] = useState('');
@@ -27,7 +27,7 @@ function Cadastrar(){
             alert(data.msg);
         }else{
             alert(data.msg);
-            navigate('/TelaLogin');
+            navigation.navigate('Login', {TelaLogin})
         }
 
     }
@@ -61,7 +61,5 @@ function Cadastrar(){
         </View>
         )
 }
-
-
 
 export default Cadastrar;

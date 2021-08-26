@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, Dimensions, StyleSheet, TouchableHighlight} from 'react-native';
 
-function PeopleList({people, navigation}){
-    if (people.length != 0){
-        const textElements = people.map((person) =>{
-            const {id_python, descricao, palavra} = person;
+function PeopleList({dici, navigation}){
+    if (dici.length != 0){
+        const textElements = dici.map((dicionario) =>{
+            const {id_python, descricao, palavra} = dicionario;
           return(
             <TouchableHighlight onPress={()=>{
-                navigation.navigate("PeopleDetails",{person});
+                navigation.navigate("Dicionario",{dicionario});
             }} key={id_python}>
                 <View style={styles.container}>
                     <Text style={styles.dicionario}>{`${palavra}`}</Text>
