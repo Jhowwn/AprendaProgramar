@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import MainScreen from './src/components/MainScreen';
+import MainScreen from './src/Pages/MainScreen';
 import { createStackNavigator } from "@react-navigation/stack";
 import GuiaEstudos from './src/Pages/GuiaEstudos';
 import Desafios from './src/Pages/Desafios';
@@ -11,9 +11,9 @@ import Cadastrar from './src/Pages/Cadastro';
 
 function App() {
 
-  const Stack = createStackNavigator();
+  const Stack = createStackNavigator();//Armazenando toda a navegação em uma variavel 
 
-  return (
+  return (//Crianda todas as navegações do nosso app
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Aprenda Programar"  component={MainScreen}  options={style}/>

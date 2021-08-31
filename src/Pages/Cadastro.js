@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Text, View, StyleSheet, ScrollView} from 'react-native';
 import React, { useState} from 'react';
 import { TextInput, Button  } from 'react-native-paper';
-import TelaLogin from './TelaLogin';
+import MainScreen from './MainScreen';
 
 function Cadastrar({navigation}){
 
@@ -27,7 +27,7 @@ function Cadastrar({navigation}){
             alert(data.msg);
         }else{
             alert(data.msg);
-            navigation.navigate('Login', {TelaLogin})
+            navigation.navigate('Aprenda Programar', MainScreen)
         }
 
     }

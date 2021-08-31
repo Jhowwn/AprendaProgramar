@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Dimensions, StyleSheet, TouchableHighlight} from 'react-native';
 
-function DicionarioList({dici, navigation}){
+function DicionarioPython({dici, navigation}){
     if (dici.length != 0){
         const textElements = dici.map((dicionario) =>{
             const {id_python, descricao, palavra} = dicionario;
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default DicionarioList;
+export default DicionarioPython;

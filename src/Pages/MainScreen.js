@@ -1,11 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView} from 'react-native';
-import Box from './Box';
+import Box from '../components/Box'
 
 function MainScreen(props) {
 
-  const {navigation} = props;
-  const {name} = props;
+  const {navigation} = props;//cirando a navegação de telas.
 
   return (
     <ScrollView>
@@ -14,7 +13,8 @@ function MainScreen(props) {
           <Text style={styles.text}>Escolha O Que Deseja Fazer</Text>
         </View>
         
-        <View style={styles.container}>
+        <View style={styles.container}>{/* Criandio os dados para navegação para o componente box,
+         sendo titulo e descrição*/}
           <Box titulo='Dicionário'
           descricao ='Proucure comandos e palavras que você precisar'
           navigation={navigation}/>
@@ -31,6 +31,8 @@ function MainScreen(props) {
           descricao= 'Treine suas habilidades de programação com nossos desafios'
           navigation={navigation}/>
 
+
+          {/* Login e Cadastro estão aqui apenas para demostração de navegação!!!*/}
           <Box titulo ='Login'
           descricao= 'Entre na sua conta'
           navigation={navigation}/>
@@ -49,7 +51,7 @@ function MainScreen(props) {
   );
 }
 
-const styles= StyleSheet.create({
+const styles= StyleSheet.create({//Estilização dos componentes.
   text:{
     fontSize: 20,
     fontWeight: 'bold',

@@ -1,22 +1,22 @@
 import React from 'react';
 import {View, Text, Dimensions, StyleSheet, TouchableHighlight} from 'react-native';
 
-function DicionarioList({dici, navigation}){
-    if (dici.length != 0){
-        const textElements = dici.map((dicionario) =>{
-            const {id_python, descricao, palavra} = dicionario;
-          return(
-            <TouchableHighlight onPress={()=>{
-                navigation.navigate("Dicionario",{dicionario});//Pode remover, isso vai para a palavra individual
-            }} key={id_python}>
-                <View style={styles.container}>
-                    <Text style={styles.dicionario}>{`${palavra}`}</Text>
-                    <Text style={styles.palavras}>{`${descricao}`}</Text>
-                </View>
-            </TouchableHighlight>
-          )
+function parceirosList({parce, navigation}){
+    if (parce.length != 0){
+        const textElements = parce.map((partner) =>{
+            const {id_parceiro, descricao_parceiro, nome_parceiro} = partner;
+            return(
+                <TouchableHighlight onPress={()=>{
+                    navigation.navigate("Parceiros", Parceiros);
+                }}key={id_parceiro}>
+                    <View style={styles.container}>
+                        <Text style={styles.dicionario}>{`${nome_parceiro}`}</Text>
+                        <Text style={styles.palavras}>{`${descricao_parceiro}`}</Text>
+                    </View>
+                </TouchableHighlight>
+            )
         });
-    
+
         return(
             <View>
                 {textElements}
@@ -27,6 +27,7 @@ function DicionarioList({dici, navigation}){
     return(
         <Text style={styles.loading}>Carregando os dados...</Text>
     )
+
 }
 
 const styles = StyleSheet.create({
@@ -57,4 +58,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default DicionarioList;
+export default parceirosList;

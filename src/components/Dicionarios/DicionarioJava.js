@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text, Dimensions, StyleSheet, TouchableHighlight} from 'react-native';
 
-function DicionarioList({dici, navigation}){
+function DicionarioJava({dici, navigation}){
     if (dici.length != 0){
         const textElements = dici.map((dicionario) =>{
-            const {id_python, descricao, palavra} = dicionario;
+            const {id_java, descricao, palavra} = dicionario;
           return(
             <TouchableHighlight onPress={()=>{
                 navigation.navigate("Dicionario",{dicionario});//Pode remover, isso vai para a palavra individual
-            }} key={id_python}>
+            }} key={id_java}>
                 <View style={styles.container}>
                     <Text style={styles.dicionario}>{`${palavra}`}</Text>
                     <Text style={styles.palavras}>{`${descricao}`}</Text>
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default DicionarioList;
+export default DicionarioJava;

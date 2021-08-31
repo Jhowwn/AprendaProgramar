@@ -1,76 +1,81 @@
-import React from 'react';
-import { Text, View, StyleSheet, ScrollView} from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import ParceirosList from '../components/ParceirosList';
 
-function Parceiros() {
-    return (
-        <ScrollView>
 
-        <View>
-          <View style={styles.divisao}>
-              <Text style={styles.text}>Parceiros</Text>
-          </View>
+function Parceiros(props) {
+  //Cria uma função para pegar os dados do banco;
+  //Guardo e exibo os resultados em tela
 
-          <View style={styles.container}>
+  const {navigation} = props;
+
+  const [parce, setParce] = useState([]);
+
+  useEffect(() => {
+    const request = {
+      "id" : "",
+      "parceiro" : "",
+      "descricao": "" 
+    }
+
+      axios.post('http://192.168.100.57/tcc/parceiros/consultarParceiro', request)
+      .then(resposta =>{
+        setParce(resposta.data.dados)
+      }).catch(err =>{
+        console.log("Ocorreu um erro" + err)
+      });
+
+  },[]);
+
+  return(
+    <ScrollView>
+      <View>
+
+        <View style={styles.divisao}>
+                <Text style={styles.text}>Parceiros</Text>
+            </View>
+  
+            <View style={styles.divisao}>
+              <Text style={styles.dicionario}>Encontre um Parceiro para seus Estudos </Text>
+            </View>
+  
             <View>
-
-              <Text style={styles.desafios}>Parceiro 1</Text>
-            
-              <Text style={styles.desafios}>Parceiro 2</Text>
-            
-              <Text style={styles.desafios}>Parceiro 3</Text>
-            
-              <Text style={styles.desafios}>Parceiro 4</Text>
-
-              <Text style={styles.desafios}>Parceiro 5</Text>
-
-              <Text style={styles.desafios}>Parceiro 6</Text>
-
+                
+              <ParceirosList parce={parce} navigation={navigation}/>
+  
             </View>
 
-          </View>
-          
-          <View style={styles.divisao}>
-            <Text style={styles.mais}>Ver mais...</Text>
-          </View>
-
-        </View>
-      </ScrollView>
-    )
+      </View>
+    </ScrollView>
+  )
 }
 
+
 const styles= StyleSheet.create({
-    text:{
-      fontSize: 25,
-      fontWeight: 'bold',
-      color: '#0f0a0a',
-      padding: 20,
-    },
-    desafios:{
-      fontSize: 15,
-      color: '#0f0a0a',
-      padding: 40,
-      borderBottomColor: 'black',
-      borderBottomWidth: 1,
-    },
-    mais:{
-      fontSize: 15,
-      color: '#0339fc',
-      padding: 30,
-      textAlign: 'center'
-    },
-    divisao:{
-      borderBottomColor: 'black',
-      borderBottomWidth: 1,
-    },
-    container: {
-      flex: 1,
-      borderBottomColor: 'black',
-      borderBottomWidth: 1,
-    },
-    buttonsContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    }
-  });
+text:{
+  fontSize: 25,
+  fontWeight: 'bold',
+  color: '#0f0a0a',
+  padding: 20,
+},
+dicionario:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#0f0a0a',
+    padding: 20,
+},
+divisao:{
+  borderBottomColor: 'black',
+  borderBottomWidth: 1,
+},
+container: {
+  backgroundColor: '#E2F9FF',
+  borderBottomColor:"#bbb",
+  borderBottomWidth: 4,
+  flexDirection: 'row',
+  alignItems: 'center',
+},
+});
 
 export default Parceiros

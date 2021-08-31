@@ -2,7 +2,8 @@ import axios from 'axios';
 import { Text, View, StyleSheet, ScrollView} from 'react-native';
 import React, { useState} from 'react';
 import { TextInput, Button  } from 'react-native-paper';
-import MainScreen from '../components/MainScreen';
+import MainScreen from './MainScreen';
+import Cadastro from './Cadastro';
 
 function Login({navigation}){
 
@@ -24,7 +25,7 @@ function Login({navigation}){
             alert(data.msg);
         }else{
             alert(data.msg);
-            navigation.navigate('Aprenda Programar', {MainScreen})
+            navigation.navigate('Aprenda Programar', MainScreen)
         }
 
     }
@@ -48,6 +49,11 @@ function Login({navigation}){
                     mode="contained" 
                     onPress={handleSubmit}
                     >Entrar</Button>
+                <Button 
+                    mode="contained" 
+                    onPress={()=>{
+                        navigation.navigate(Cadastro);
+                    }}>Cadastrar uma conta</Button>
             </View>
 
         </View>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableHighlight, Dimensions, View } from 'react-native';
 
-function Box({titulo, descricao, navigation }) {
+function Box({titulo, descricao, navigation }) {//Passando os parametros para navegação  eexibição dos dados.
     return (
         <TouchableHighlight onPress={() =>{
-            navigation.navigate(titulo);
-        }}>
+            navigation.navigate(titulo);//Criando a navegação para a tela que o usúario escolher.
+        }}>{/*Criando a exebição dos componetes na tela principal */}
             <View style={styles.box}>
                 <Text style={styles.titulo}>{titulo}</Text>
                 <Text stle={styles.descricao}>{descricao}</Text>
