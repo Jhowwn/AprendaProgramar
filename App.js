@@ -8,6 +8,7 @@ import Parceiros from './src/Pages/Parceiros';
 import Dicionario from './src/Pages/Dicionario';
 import Login from './src/Pages/TelaLogin';
 import Cadastrar from './src/Pages/Cadastro';
+import Palavras from './src/Pages/palavras/palavras';
 
 function App() {
 
@@ -23,6 +24,17 @@ function App() {
         <Stack.Screen name="Dicionário" component={Dicionario}  options={style}/>
         <Stack.Screen name="Login"  component={Login}  options={style}/>
         <Stack.Screen name="Cadastrar"  component={Cadastrar}  options={style}/>
+        <Stack.Screen name="Palavras"  component={Palavras}  options={({route})=>{
+            const titlePage = route.params.dicionario.palavra;
+
+            return({
+              title: titlePage,
+              headerStyle: style.headerStyle,
+              headerTitleStyle: style.headerTitleStyle
+            });
+          }}/>
+
+
       </Stack.Navigator>
     </NavigationContainer>
   )

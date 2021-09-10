@@ -27,6 +27,7 @@ function Parceiros(props) {
       });
 
   },[]);
+  console.log(parce)
 
   return(
     <ScrollView>

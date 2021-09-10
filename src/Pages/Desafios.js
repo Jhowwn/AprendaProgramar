@@ -13,19 +13,23 @@ function Desafios() {
           <View style={styles.container}>
             <View>
 
+              <Text style={styles.desafios}>Python: 0 a 10 Perguntas</Text>
+            
+              <Text style={styles.desafios}>JavaScript: 0 a 10 Perguntas</Text>
+            
+              <Text style={styles.desafios}>Java: 0 a 10 Perguntas</Text>
+            
               <Text style={styles.desafios}>Python: 0 a 20 Perguntas</Text>
             
               <Text style={styles.desafios}>JavaScript: 0 a 20 Perguntas</Text>
             
               <Text style={styles.desafios}>Java: 0 a 20 Perguntas</Text>
+
+              <Text style={styles.desafios}>Python: 0 a 30 Perguntas</Text>
             
-              <Text style={styles.desafios}>C#: 0 a 20 Perguntas</Text>
-
-              <Text style={styles.desafios}>React: 0 a 20 Perguntas</Text>
-
-              <Text style={styles.desafios}>React Native: 0 a 20 Perguntas</Text>
-
-              <Text style={styles.desafios}>PHP: 0 a 20 Perguntas</Text>
+              <Text style={styles.desafios}>JavaScript: 0 a 30 Perguntas</Text>
+            
+              <Text style={styles.desafios}>Java: 0 a 30 Perguntas</Text>
 
             </View>
 

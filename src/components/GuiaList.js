@@ -1,22 +1,23 @@
 import React from 'react';
 import {View, Text, Dimensions, StyleSheet, TouchableHighlight} from 'react-native';
 
-function DicionarioJavaScript({dici, navigation}){
-    if (dici.length != 0){
-        const textElements = dici.map((dicionario) =>{
-            const {id_javascript, descricao, palavra} = dicionario;
-          return(
-            <TouchableHighlight onPress={()=>{
-                navigation.navigate("Dicionario",{dicionario});//Pode remover, isso vai para a palavra individual
-            }} key={id_javascript}>
-                <View style={styles.container}>
-                    <Text style={styles.dicionario}>{`${palavra}`}</Text>
-                    <Text style={styles.palavras}>{`${descricao}`}</Text>
-                </View>
-            </TouchableHighlight>
-          )
-        });
+function guiaList({guia, navigation}){
     
+    if (guia.length != 0){
+        const textElements = guia.map((estudos) =>{
+            const {id_guia, descricao_guia, nome_guia} = estudos;
+            return(
+                <TouchableHighlight onPress={()=>{
+                    navigation.navigate("GuiaEstudos", GuiaEstuddos);
+                }}key={id_guia}>
+                    <View style={styles.container}>
+                        <Text style={styles.dicionario}>{`${nome_guia}`}</Text>
+                        <Text style={styles.palavras}>{`${descricao_guia}`}</Text>
+                    </View>
+                </TouchableHighlight>
+            )
+        });
+
         return(
             <View>
                 {textElements}
@@ -27,7 +28,9 @@ function DicionarioJavaScript({dici, navigation}){
     return(
         <Text style={styles.loading}>Carregando os dados...</Text>
     )
+
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -57,4 +60,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default DicionarioJavaScript;
+export default guiaList;

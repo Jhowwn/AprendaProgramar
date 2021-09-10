@@ -5,9 +5,10 @@ function DicionarioList({dici, navigation}){
     if (dici.length != 0){
         const textElements = dici.map((dicionario) =>{
             const {id_python, descricao, palavra} = dicionario;
+            
           return(
             <TouchableHighlight onPress={()=>{
-                navigation.navigate("Dicionario",{dicionario});//Pode remover, isso vai para a palavra individual
+                navigation.navigate("Palavras",{dicionario});//Pode remover, isso vai para a palavra individual
             }} key={id_python}>
                 <View style={styles.container}>
                     <Text style={styles.dicionario}>{`${palavra}`}</Text>
@@ -16,6 +17,8 @@ function DicionarioList({dici, navigation}){
             </TouchableHighlight>
           )
         });
+
+        
     
         return(
             <View>
