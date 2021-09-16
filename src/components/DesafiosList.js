@@ -1,25 +1,23 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 
-function DicionarioList({dici, navigation}){
-    if (dici.length != 0){
-        const textElements = dici.map((dicionario) =>{
-            const {id_python, descricao, palavra} = dicionario;
-            
+function DesafiosList({desafio, navigation}){
+    if (desafio.length != 0){
+        const textElements = desafio.map((Perguntas) =>{
+            const {id_pergunta, texto, alternativa_correta} = Perguntas;
+            console.log(Perguntas)
           return(
             <TouchableHighlight onPress={()=>{
                 navigation.navigate("Palavras",{dicionario});//Pode remover, isso vai para a palavra individual
-            }} key={id_python}>
+            }} key={id_pergunta}>
                 <View style={styles.container}>
-                    <Text style={styles.dicionario}>{`${palavra}`}</Text>
-                    <Text style={styles.palavras}>{`${descricao}`}</Text>
+                    <Text style={styles.dicionario}>{`${texto}`}</Text>
+                    <Text style={styles.palavras}>{`${alternativa_correta}`}</Text>
                 </View>
             </TouchableHighlight>
           )
         });
 
-        
-    
         return(
             <View>
                 {textElements}
@@ -60,4 +58,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default DicionarioList;
+export default DesafiosList;

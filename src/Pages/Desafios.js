@@ -1,7 +1,34 @@
-import React from 'react';
-import { Text, View, StyleSheet, ScrollView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { Text, View, StyleSheet, ScrollView, TouchableHighlight} from 'react-native';
+import axios from 'axios';
+import DesafiosList from '../components/DesafiosList'
 
-function Desafios() {
+
+function Desafios(props) {
+
+   //crio uma função para capturar os dados do Banco;
+  //Guardar em uma variavel os dados retornados
+  //Remderizae os daods em tela
+
+  const {navigation} = props;
+
+  const [desafio, setDesafio] = useState([]);
+
+  useEffect( () => {
+    const request = {
+      "perguntas": "",
+      "alternativas": "",
+    }
+
+      axios.post('http://192.168.100.57/tcc/questionario/questionarioBasico', request)
+      .then(resposta =>{
+        setDesafio(resposta.data.dados)
+      }).catch(err =>{
+        console.log("Ocorreu um erro" + err)
+      });
+  }, []);
+
+  console.log(desafio);
     return (
       <ScrollView>
 
@@ -14,22 +41,12 @@ function Desafios() {
             <View>
 
               <Text style={styles.desafios}>Python: 0 a 10 Perguntas</Text>
+
+              <DesafiosList desafio={desafio} navigation={navigation}/>
             
               <Text style={styles.desafios}>JavaScript: 0 a 10 Perguntas</Text>
             
               <Text style={styles.desafios}>Java: 0 a 10 Perguntas</Text>
-            
-              <Text style={styles.desafios}>Python: 0 a 20 Perguntas</Text>
-            
-              <Text style={styles.desafios}>JavaScript: 0 a 20 Perguntas</Text>
-            
-              <Text style={styles.desafios}>Java: 0 a 20 Perguntas</Text>
-
-              <Text style={styles.desafios}>Python: 0 a 30 Perguntas</Text>
-            
-              <Text style={styles.desafios}>JavaScript: 0 a 30 Perguntas</Text>
-            
-              <Text style={styles.desafios}>Java: 0 a 30 Perguntas</Text>
 
             </View>
 
@@ -53,7 +70,7 @@ const styles= StyleSheet.create({
     padding: 20,
   },
   desafios:{
-    fontSize: 15,
+    fontSize: 20,
     color: '#0f0a0a',
     padding: 30,
     borderBottomColor: 'black',
@@ -70,14 +87,12 @@ const styles= StyleSheet.create({
     borderBottomWidth: 1,
   },
   container: {
-    flex: 1,
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-  },
-  buttonsContainer: {
+    backgroundColor: '#E2F9FF',
+    borderBottomColor:"#bbb",
+    borderBottomWidth: 4,
     flexDirection: 'row',
-    flexWrap: 'wrap',
-  }
+    alignItems: 'center',
+  },
 });
 
 export default Desafios;
